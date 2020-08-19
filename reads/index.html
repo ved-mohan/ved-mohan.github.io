@@ -5,7 +5,7 @@ title: Hank Quinlan's Blog
 	<h1>{{ page.title }}</h1>
 	<ul class="books">
 
-	  {% for book in site.book %}
+	  {% for book in site.books %}
 	    <li><span>{{ book.date | date_to_string }}</span> » <a href="{{ book.url }}" title="{{ book.title }}">{{ book.title }}</a></li>
 	  {% endfor %}
 	</ul>
