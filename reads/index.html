@@ -3,9 +3,5 @@ layout: default
 title: Books I've been reading
 ---
 	<h1>{{ page.title }}</h1>
-	<ul class="books">
+<h2> Nothing to Envy: Ordinary Lives in North Korea, by Barbara Demick </h2>
 
-	  {% for book in site.books %}
-	    <li><span>{{ book.date | date_to_string }}</span> » <a href="{{ book.url }}" title="{{ book.title }}">{{ book.title }}</a></li>
-	  {% endfor %}
-	</ul>
