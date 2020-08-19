@@ -3,9 +3,9 @@ layout: default
 title: Hank Quinlan's Blog
 ---
 	<h1>{{ page.title }}</h1>
-	<ul class="posts">
+	<ul class="books">
 
-	  {% for post in site.posts %}
-	    <li><span>{{ post.date | date_to_string }}</span> » <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></li>
+	  {% for book in site.book %}
+	    <li><span>{{ book.date | date_to_string }}</span> » <a href="{{ book.url }}" title="{{ book.title }}">{{ book.title }}</a></li>
 	  {% endfor %}
 	</ul>
