@@ -5,7 +5,7 @@ title: Books I've been reading
 	<h1>{{ page.title }}</h1>
 	<ul class="books">
 
-	  {% for post in site.books %}
-	    <li><span>{{ post.date | date_to_string }}</span> » <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></li>
+	  {% for book in site.books %}
+	    <li><span>{{ book.date | date_to_string }}</span> » <a href="{{ book.url }}" title="{{ book.title }}">{{ book.title }}</a></li>
 	  {% endfor %}
 	</ul>
