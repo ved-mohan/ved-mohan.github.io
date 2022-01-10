@@ -11,7 +11,7 @@ layout: feed
 	<id>http://ved-mohan.github.io/blog</id>
 	<author>
 		<name>Ved Mohan</name>
-		<email>vedmohan6@gmail.com</email>
+		<email>vedmohan@icloud.com</email>
 	</author>
 
 	{% for post in site.posts %}
