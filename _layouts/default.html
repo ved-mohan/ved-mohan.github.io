@@ -1,38 +1,33 @@
 <!DOCTYPE html>
-	<html>
-		<head>
-			<title>{{ page.title }}</title>
-			<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--			<style>-->
-<!--			img {-->
-<!--			  border-radius: 50%;-->
-<!--			}-->
-<!--			</style>-->
-			<!-- link to main stylesheet -->
-			<link rel="stylesheet" type="text/css" href="/css/main.css">
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{{ page.title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{ page.description | default: 'Ved Mohan — art, photography, and research.' }}">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/art/">Art</a></li>
+            <li><a href="/research/">Research</a></li>
+            <li><a href="/about/">About</a></li>
+        </ul>
+    </nav>
 
-		</head>
-		<body>
-			<nav>
-	    		<ul>
-	        		<li><a href="/">Home</a></li>
-		        	<li><a href="/about">About</a></li>
-<!-- 				<li><a href="/reads">Reads</a></li> -->
-<!--	        		<li><a href="/cv">CV</a></li>-->
-<!--	        		<li><a href="/blog">Reading</a></li>-->
-					<li><a href="/Reading">Reading</a></li>
-	    		</ul>
-			</nav>
-			<div class="container">
+    <main class="container">
+        {{ content }}
+    </main>
 
-			{{ content }}
+    <footer>
+        <ul>
+            <li><a href="mailto:vedmohan@gatech.edu">email</a></li>
+        </ul>
+    </footer>
 
-			</div><!-- /.container -->
-			<footer>
-	    		<ul>
-	        		<li><a href="mailto:vedmohan@gatech.edu">email</a></li>
-	        		<!-- <li><a href="https://github.com/ved-mohan">github.com/ved-mohan</a></li> -->
-				</ul>
-			</footer>
-		</body>
-	</html>
+    <script async src="//static.getclicky.com/101355157.js"></script>
+    <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/101355157ns.gif" /></p></noscript>
+</body>
+</html>
