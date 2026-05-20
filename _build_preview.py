@@ -82,6 +82,7 @@ def build():
 def serve(port: int = 8765):
     os.chdir(BUILD)
     handler = http.server.SimpleHTTPRequestHandler
+    socketserver.TCPServer.allow_reuse_address = True
     with socketserver.TCPServer(("", port), handler) as httpd:
         print(f"Serving at http://localhost:{port}")
         httpd.serve_forever()

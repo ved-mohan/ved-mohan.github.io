@@ -26,6 +26,20 @@ body {
     padding: 0 1.25rem;
 }
 
+.wordmark {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text);
+    letter-spacing: 0.02em;
+    margin-bottom: 0.6rem;
+    border-bottom: none;
+}
+
+.wordmark:hover {
+    border-bottom: none;
+}
+
 nav {
     margin-bottom: 3rem;
 }
