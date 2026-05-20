@@ -10,22 +10,43 @@ title: Art — Ved Mohan
 
 <figure class="featured" id="featured"></figure>
 
+<div class="masonry" id="grid"></div>
+
 <script>
 (function () {
     const works = [
-        { title: "Textiles 001", year: 2026, src: "/assets/photography/thumbs/textiles_001.jpg" },
-        { title: "Textiles 002", year: 2026, src: "/assets/photography/thumbs/textiles_002.jpg" },
-        { title: "Textiles 003", year: 2026, src: "/assets/photography/thumbs/textiles_003.jpg" },
-        { title: "Textiles 004", year: 2026, src: "/assets/photography/thumbs/textiles_004.jpg" }
+        { title: "Colombia",          year: 2025, slug: "colombia_2025" },
+        { title: "Seattle",           year: 2024, slug: "seattle_2024" },
+        { title: "Snow Explorers I",  year: 2024, slug: "snow_explorers_1_2024" },
+        { title: "Snow Explorers II", year: 2024, slug: "snow_explorers_2_2024" },
+        { title: "Textiles 001",      year: 2026, slug: "textiles_001" },
+        { title: "Textiles 002",      year: 2026, slug: "textiles_002" },
+        { title: "Textiles 003",      year: 2026, slug: "textiles_003" },
+        { title: "Textiles 004",      year: 2026, slug: "textiles_004" },
+        { title: "Textiles 005",      year: 2026, slug: "textiles_005" },
+        { title: "Textiles 006",      year: 2026, slug: "textiles_006" },
+        { title: "Textiles 007",      year: 2026, slug: "textiles_007" },
+        { title: "Textiles 008",      year: 2026, slug: "textiles_008" }
     ];
     if (!works.length) return;
+
+    const thumbOf = function (w) { return "/assets/photography/thumbs/" + w.slug + ".jpg"; };
+    const fullOf  = function (w) { return "/assets/photography/"        + w.slug + ".jpg"; };
+
+    // Daily-rotating featured work (tokonoma)
     const today = new Date().toISOString().slice(0, 10);
     let h = 0;
     for (let i = 0; i < today.length; i++) h = ((h << 5) - h + today.charCodeAt(i)) | 0;
     const w = works[Math.abs(h) % works.length];
-    const el = document.getElementById("featured");
-    el.innerHTML =
-        '<img src="' + w.src + '" alt="' + w.title + '">' +
+    document.getElementById("featured").innerHTML =
+        '<div class="featured-frame"><img src="' + thumbOf(w) + '" alt="' + w.title + '"></div>' +
         '<figcaption>' + w.title + ' &mdash; ' + w.year + '</figcaption>';
+
+    // Grid of all works
+    document.getElementById("grid").innerHTML = works.map(function (x) {
+        return '<a href="' + fullOf(x) + '" class="lightbox-trigger"><img src="' + thumbOf(x) + '" alt=""></a>';
+    }).join("");
 })();
 </script>
+
+<script src="/assets/lightbox.js"></script>
