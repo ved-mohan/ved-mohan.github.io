@@ -1,0 +1,31 @@
+---
+layout: default
+title: Art — Ved Mohan
+---
+
+<ul class="section-links">
+    <li><a href="/art/photography/">Photography</a></li>
+    <li><a href="/art/prints/">Prints</a></li>
+</ul>
+
+<figure class="featured" id="featured"></figure>
+
+<script>
+(function () {
+    const works = [
+        { title: "Textiles 001", year: 2026, src: "/assets/photography/thumbs/textiles_001.jpg" },
+        { title: "Textiles 002", year: 2026, src: "/assets/photography/thumbs/textiles_002.jpg" },
+        { title: "Textiles 003", year: 2026, src: "/assets/photography/thumbs/textiles_003.jpg" },
+        { title: "Textiles 004", year: 2026, src: "/assets/photography/thumbs/textiles_004.jpg" }
+    ];
+    if (!works.length) return;
+    const today = new Date().toISOString().slice(0, 10);
+    let h = 0;
+    for (let i = 0; i < today.length; i++) h = ((h << 5) - h + today.charCodeAt(i)) | 0;
+    const w = works[Math.abs(h) % works.length];
+    const el = document.getElementById("featured");
+    el.innerHTML =
+        '<img src="' + w.src + '" alt="' + w.title + '">' +
+        '<figcaption>' + w.title + ' &mdash; ' + w.year + '</figcaption>';
+})();
+</script>

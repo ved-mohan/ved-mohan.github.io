@@ -1,0 +1,64 @@
+---
+layout: default
+title: Paper Notes — Ved Mohan
+---
+
+<h2>Human &rarr; Model</h2>
+
+<ul class="papers">
+    <li>
+        <strong>NL4Opt</strong> &mdash; Ramamonjison et al., 2023.
+        <br>
+        <span class="muted">NER + LP-generation pipeline that turns NL word problems into solvable LPs; stage decomposition exposes how span errors compound into LP errors.</span>
+    </li>
+    <li>
+        <strong>LM4OPT</strong> &mdash; Ahmed &amp; Choudhury, 2024.
+        <br>
+        <span class="muted">Large LMs match the NL4Opt pipeline on F1 but lose the diagnosability the pipeline's stage decomposition provided.</span>
+    </li>
+    <li>
+        <strong>FLEx</strong> &mdash; Avsian et al., 2026.
+        <br>
+        <span class="muted">Mine LLM failure modes from training data, distill into prefix hints injected at inference; aligns representational shift to failure shift.</span>
+    </li>
+</ul>
+
+<h2>Model &rarr; Human</h2>
+
+<ul class="papers">
+    <li>
+        <strong>OptiGuide</strong> &mdash; Li et al., 2023.
+        <br>
+        <span class="muted">LLM-mediated what-if queries on a deployed MILP via code-gen + re-solve, kept inside an enterprise enclave; interrogation-only.</span>
+    </li>
+    <li>
+        <strong>OptiChat</strong> &mdash; Chen et al., 2025.
+        <br>
+        <span class="muted">Five-query taxonomy (diagnose, retrieve, sensitivity, what-if, why-not); only why-not requires LLM-generated counterfactual code.</span>
+    </li>
+    <li>
+        <strong>Democratizing Optimization with Generative AI</strong> &mdash; Simchi-Levi et al., 2025.
+        <br>
+        <span class="muted">Research-agenda paper for non-experts to query and steer optimization models; positions the bidirectional channel without fully specifying it.</span>
+    </li>
+</ul>
+
+<h2>Multi-Human / Social Choice</h2>
+
+<ul class="papers">
+    <li>
+        <strong>Habermas Machine</strong> &mdash; Tessler et al., 2025.
+        <br>
+        <span class="muted">AI-mediated group-preference statements rated above unaided mediator output; large-scale LLM test in deliberative settings.</span>
+    </li>
+    <li>
+        <strong>SFUSD School Choice</strong> &mdash; Allman et al., 2022.
+        <br>
+        <span class="muted">Mechanism design for diversity in San Francisco school assignment; concrete deployment of social-choice theory in public policy.</span>
+    </li>
+    <li>
+        <strong>Conversation Agents for OR</strong> &mdash; Drossman et al., 2026.
+        <br>
+        <span class="muted">LLM agents that converse with users to elicit objectives for downstream optimization; front-end to OR models.</span>
+    </li>
+</ul>
