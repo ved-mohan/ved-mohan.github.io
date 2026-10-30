@@ -224,10 +224,92 @@ ul.section-links li {
     display: flex;
 }
 
-.lightbox-overlay img {
+.lightbox-stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    max-width: min(92vw, 1000px);
+}
+
+.lightbox-main {
     max-width: 100%;
     max-height: 90vh;
     object-fit: contain;
+}
+
+.has-strip .lightbox-main {
+    max-height: 58vh;
+}
+
+/* comic-strip process panels under a print */
+.lightbox-strip,
+.lightbox-hint {
+    display: none;
+}
+
+.has-strip .lightbox-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: min(92vw, 600px);
+    padding: 10px;
+    background: #fafaf7;
+    border: 3px solid #111;
+}
+
+.has-strip .lightbox-hint {
+    display: block;
+    margin: -0.4rem 0 0;
+    font-size: 0.75rem;
+    color: #bdbdb5;
+}
+
+.lightbox-strip .panel {
+    position: relative;
+    padding: 0;
+    border: 3px solid #111;
+    background: #fff;
+    cursor: pointer;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+}
+
+.lightbox-strip .panel img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.lightbox-strip .panel-num {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 1px 7px 2px;
+    background: #111;
+    color: #fafaf7;
+    font: 700 0.85rem 'Lato', sans-serif;
+}
+
+.lightbox-strip .panel-cap {
+    position: absolute;
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
+    padding: 2px 4px;
+    background: #fff4c2;
+    border: 2px solid #111;
+    color: #111;
+    font: 700 0.62rem 'Lato', sans-serif;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.lightbox-strip .panel.active {
+    outline: 3px solid #b7a6dd;
+    outline-offset: 2px;
 }
 
 .lightbox-close {
@@ -381,14 +463,4 @@ ul.section-links li {
     image-rendering: pixelated;
     image-rendering: crisp-edges;
     border: 1px solid var(--rule);
-}
-
-.process.four {
-    grid-template-columns: repeat(4, 1fr);
-}
-
-@media (max-width: 520px) {
-    .process.four {
-        grid-template-columns: repeat(2, 1fr);
-    }
 }

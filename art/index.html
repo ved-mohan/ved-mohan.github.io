@@ -7,35 +7,16 @@ title: Art — Ved Mohan
 
 <div class="masonry" id="grid"></div>
 
-<section class="print" id="process">
-    <h2>Process</h2>
-    <h3>Picasso Poots</h3>
-    <p class="meta">Woodblock print, block-printing ink on paper &middot; four blocks &middot; edition of 4 &middot; 2026</p>
-    <ol class="process four">
-        <li>
-            <a href="/assets/prints/picasso-poots/01-sketch.jpg" class="lightbox-trigger"><img src="/assets/prints/picasso-poots/thumbs/01-sketch.jpg" alt="Pen sketch of a dog with a big nose, framed in a box"></a>
-            <span>Sketch</span>
-        </li>
-        <li>
-            <a href="/assets/prints/picasso-poots/02-blocks.jpg" class="lightbox-trigger"><img src="/assets/prints/picasso-poots/thumbs/02-blocks.jpg" alt="Four wood blocks with the design traced on each, one per color"></a>
-            <span>Four blocks</span>
-        </li>
-        <li>
-            <a href="/assets/prints/picasso-poots/03-proof-1of4.jpg" class="lightbox-trigger"><img src="/assets/prints/picasso-poots/thumbs/03-proof-1of4.jpg" alt="First impression, 1 of 4, with heavy, muddy inking"></a>
-            <span>First pull, 1/4</span>
-        </li>
-        <li>
-            <a href="/assets/prints/picasso-poots/04-final-3of4.jpg" class="lightbox-trigger"><img src="/assets/prints/picasso-poots/thumbs/04-final-3of4.jpg" alt="Final print, 3 of 4: a brown dog in blue-gray outline against green and pink blocks of color"></a>
-            <span>Final, 3/4</span>
-        </li>
-    </ol>
-</section>
-
 <script>
 (function () {
     const works = [
         { title: "Picasso Poots",     year: 2026, thumb: "/assets/prints/picasso-poots/thumbs/04-final-3of4.jpg",
-                                                  full:  "/assets/prints/picasso-poots/04-final-3of4.jpg" },
+                                                  full:  "/assets/prints/picasso-poots/04-final-3of4.jpg",
+          strip: [
+              { label: "Sketch",      src: "/assets/prints/picasso-poots/01-sketch.jpg",      thumb: "/assets/prints/picasso-poots/thumbs/01-sketch.jpg" },
+              { label: "Four blocks", src: "/assets/prints/picasso-poots/02-blocks.jpg",      thumb: "/assets/prints/picasso-poots/thumbs/02-blocks.jpg" },
+              { label: "First pull",  src: "/assets/prints/picasso-poots/03-proof-1of4.jpg",  thumb: "/assets/prints/picasso-poots/thumbs/03-proof-1of4.jpg" }
+          ] },
         { title: "Colombia",          year: 2025, slug: "colombia_2025" },
         { title: "Seattle",           year: 2024, slug: "seattle_2024" },
         { title: "Snow Explorers I",  year: 2024, slug: "snow_explorers_1_2024" },
@@ -65,7 +46,8 @@ title: Art — Ved Mohan
 
     // Grid of all works
     document.getElementById("grid").innerHTML = works.map(function (x) {
-        return '<a href="' + fullOf(x) + '" class="lightbox-trigger"><img src="' + thumbOf(x) + '" alt=""></a>';
+        const strip = x.strip ? ' data-strip="' + encodeURIComponent(JSON.stringify(x.strip)) + '"' : "";
+        return '<a href="' + fullOf(x) + '" class="lightbox-trigger"' + strip + '><img src="' + thumbOf(x) + '" alt=""></a>';
     }).join("");
 })();
 </script>
