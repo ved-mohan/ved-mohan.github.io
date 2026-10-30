@@ -3,7 +3,7 @@
 and serves from _site_preview/ on localhost:8000.
 
 Not a full Jekyll replacement — only handles frontmatter strip + {{ content }}
-substitution + {{ page.title }} substitution. Enough to preview vedm.dev.
+substitution + {{ page.title }} / {{ page.description }} / {{ page.url }} substitution. Enough to preview vedm.dev.
 """
 
 from __future__ import annotations
@@ -41,6 +41,10 @@ def render(html_path: Path, layout_src: str) -> str:
     title = meta.get("title", "")
     out = layout_src.replace("{{ content }}", body)
     out = out.replace("{{ page.title }}", title)
+    out = out.replace("{{ page.description }}", meta.get("description", ""))
+    rel = html_path.relative_to(ROOT).as_posix()
+    url = meta.get("permalink") or ("/" + rel[: -len("index.html")] if rel.endswith("index.html") else "/" + rel)
+    out = out.replace("{{ page.url }}", url)
     return out
 
 
@@ -55,6 +59,9 @@ def build():
     layout_src = LAYOUT.read_text(encoding="utf-8")
 
     # Copy static asset directories directly
+    for f in ("favicon.svg", "apple-touch-icon.png"):
+        if (ROOT / f).exists():
+            shutil.copy(ROOT / f, BUILD / f)
     for d in ("css", "jpg", "assets"):
         src = ROOT / d
         if src.exists():

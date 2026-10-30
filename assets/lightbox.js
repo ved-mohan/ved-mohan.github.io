@@ -1,62 +1,84 @@
 (function () {
-    const overlay = document.createElement("div");
-    overlay.className = "lightbox-overlay";
-    overlay.innerHTML = '<button class="lightbox-close" aria-label="Close">&times;</button>' +
-        '<div class="lightbox-stage"><img class="lightbox-main" alt=""><p class="lightbox-caption"></p><div class="lightbox-strip"></div>' +
-        '<p class="lightbox-hint">Tap a panel to enlarge it</p></div>';
-    document.body.appendChild(overlay);
-    const img = overlay.querySelector(".lightbox-main");
-    const strip = overlay.querySelector(".lightbox-strip");
-    const caption = overlay.querySelector(".lightbox-caption");
-    const close = overlay.querySelector(".lightbox-close");
-    let homeSrc = "";
+    // Accessible lightbox on a native <dialog>: focus moves in and returns, background is inert,
+    // Escape closes, the enlarged image is described, and process panels announce their state.
+    const dlg = document.createElement("dialog");
+    dlg.className = "lightbox";
+    dlg.setAttribute("aria-label", "Enlarged artwork");
+    dlg.innerHTML =
+        '<button class="lightbox-close" type="button" aria-label="Close">&times;</button>' +
+        '<div class="lightbox-stage">' +
+        '<img class="lightbox-main" alt="">' +
+        '<p class="lightbox-caption" hidden></p>' +
+        '<div class="lightbox-strip" role="group" aria-label="How the print was made"></div>' +
+        '<button class="lightbox-back" type="button" hidden>&larr; Finished print</button>' +
+        '<p class="lightbox-hint">Tap a panel to enlarge it</p>' +
+        '</div>';
+    document.body.appendChild(dlg);
+    const img = dlg.querySelector(".lightbox-main");
+    const caption = dlg.querySelector(".lightbox-caption");
+    const strip = dlg.querySelector(".lightbox-strip");
+    const back = dlg.querySelector(".lightbox-back");
+    const closeBtn = dlg.querySelector(".lightbox-close");
+    let home = { src: "", alt: "" }, opener = null;
 
-    // strip = [{ src, thumb, label }]: process panels shown comic-strip style under the main image
-    function open(src, steps, cap) {
-        homeSrc = src;
-        img.src = src;
-        caption.innerHTML = cap || "";
-        caption.style.display = cap ? "block" : "none";
+    function show(src, alt) { img.src = src; img.alt = alt || ""; }
+    function finished() {
+        strip.querySelectorAll(".panel").forEach(function (p) { p.setAttribute("aria-pressed", "false"); });
+        show(home.src, home.alt);
+        back.hidden = true;
+    }
+
+    function open(a) {
+        opener = a;
+        const thumb = a.querySelector("img");
+        home = { src: a.getAttribute("href"), alt: a.getAttribute("data-alt") || (thumb ? thumb.alt : "") };
+        show(home.src, home.alt);
+        const cap = a.getAttribute("data-caption");
+        caption.innerHTML = cap ? decodeURIComponent(cap) : "";
+        caption.hidden = !cap;
         strip.innerHTML = "";
-        overlay.classList.toggle("has-strip", !!(steps && steps.length));
-        (steps || []).forEach(function (s, i) {
+        back.hidden = true;
+        const raw = a.getAttribute("data-strip");
+        const steps = raw ? JSON.parse(decodeURIComponent(raw)) : [];
+        dlg.classList.toggle("has-strip", steps.length > 0);
+        steps.forEach(function (s, i) {
             const b = document.createElement("button");
+            b.type = "button";
             b.className = "panel";
-            b.innerHTML = '<span class="panel-num">' + (i + 1) + '</span><img src="' + s.thumb + '" alt="' + s.label +
-                '"><span class="panel-cap">' + s.label + '</span>';
+            b.setAttribute("aria-pressed", "false");
+            b.setAttribute("aria-label", "Step " + (i + 1) + ": " + s.label);
+            b.innerHTML = '<span class="panel-num" aria-hidden="true">' + (i + 1) + '</span><img src="' + s.thumb +
+                '" alt=""><span class="panel-cap" aria-hidden="true">' + s.label + '</span>';
             b.addEventListener("click", function () {
-                const active = b.classList.contains("active");
-                strip.querySelectorAll(".panel").forEach(function (p) { p.classList.remove("active"); });
-                if (active) {
-                    img.src = homeSrc;
-                } else {
-                    b.classList.add("active");
-                    img.src = s.src;
-                }
+                if (b.getAttribute("aria-pressed") === "true") return finished();
+                strip.querySelectorAll(".panel").forEach(function (p) { p.setAttribute("aria-pressed", "false"); });
+                b.setAttribute("aria-pressed", "true");
+                show(s.src, "Process step " + (i + 1) + ": " + s.label);
+                back.hidden = false;
             });
             strip.appendChild(b);
         });
-        overlay.classList.add("open");
+        document.documentElement.classList.add("lightbox-open");
+        dlg.showModal();
+        closeBtn.focus();
     }
-    function shut() {
-        overlay.classList.remove("open", "has-strip");
+
+    back.addEventListener("click", finished);
+    closeBtn.addEventListener("click", function () { dlg.close(); });
+    dlg.addEventListener("click", function (e) {
+        if (e.target === dlg || e.target.classList.contains("lightbox-stage")) dlg.close();
+    });
+    dlg.addEventListener("close", function () {
         img.src = "";
         strip.innerHTML = "";
-    }
+        document.documentElement.classList.remove("lightbox-open");
+        if (opener) opener.focus();
+    });
 
     document.querySelectorAll(".lightbox-trigger").forEach(function (a) {
         a.addEventListener("click", function (e) {
             e.preventDefault();
-            const raw = a.getAttribute("data-strip");
-            const cap = a.getAttribute("data-caption");
-            open(a.getAttribute("href"), raw ? JSON.parse(decodeURIComponent(raw)) : null,
-                 cap ? decodeURIComponent(cap) : "");
+            open(a);
         });
-    });
-    overlay.addEventListener("click", function (e) {
-        if (e.target === overlay || e.target === close) shut();
-    });
-    document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape" && overlay.classList.contains("open")) shut();
     });
 })();

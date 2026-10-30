@@ -1,12 +1,12 @@
 ---
 layout: default
 title: Art — Ved Mohan
+description: Photography and woodblock prints by Ved Mohan, including the Textiles series featured in the Textiles Team 2026 Magazine.
 ---
 
 <figure class="featured" id="featured"></figure>
 
-<p class="press">Textiles series featured in the <a href="https://online.fliphtml5.com/textilesteam/2026-Magazine/#p=2" target="_blank" rel="noopener">Textiles Team 2026 Magazine</a><br>
-pp. <a href="https://online.fliphtml5.com/textilesteam/2026-Magazine/#p=2" target="_blank" rel="noopener">2</a> &middot; <a href="https://online.fliphtml5.com/textilesteam/2026-Magazine/#p=15" target="_blank" rel="noopener">15</a> &middot; <a href="https://online.fliphtml5.com/textilesteam/2026-Magazine/#p=20" target="_blank" rel="noopener">20–21</a> &middot; <a href="https://online.fliphtml5.com/textilesteam/2026-Magazine/#p=26" target="_blank" rel="noopener">26</a> &middot; <a href="https://online.fliphtml5.com/textilesteam/2026-Magazine/#p=30" target="_blank" rel="noopener">30</a> &middot; <a href="https://online.fliphtml5.com/textilesteam/2026-Magazine/#p=34" target="_blank" rel="noopener">34</a> &middot; <a href="https://online.fliphtml5.com/textilesteam/2026-Magazine/#p=36" target="_blank" rel="noopener">credits, p. 36</a></p>
+<p class="press">Textiles series featured across seven pages of the <a href="https://online.fliphtml5.com/textilesteam/2026-Magazine/#p=2" target="_blank" rel="noopener">Textiles Team 2026 Magazine</a></p>
 
 <div class="masonry" id="grid"></div>
 
@@ -37,72 +37,101 @@ pp. <a href="https://online.fliphtml5.com/textilesteam/2026-Magazine/#p=2" targe
         { title: "Textiles 011",      year: 2026, slug: "textiles_011" },
         { title: "Textiles 012",      year: 2026, slug: "textiles_012" },
         { title: "Textiles 013",      year: 2026, slug: "textiles_013" },
-        { title: "Textiles 014",      year: 2026, slug: "textiles_014" },
         { title: "Textiles 015",      year: 2026, slug: "textiles_015" },
-        { title: "Textiles 016",      year: 2026, slug: "textiles_016" },
         { title: "Textiles 017",      year: 2026, slug: "textiles_017" },
         { title: "Textiles 018",      year: 2026, slug: "textiles_018" },
         { title: "Textiles 019",      year: 2026, slug: "textiles_019" },
         { title: "Textiles 020",      year: 2026, slug: "textiles_020" },
-        { title: "Textiles 021",      year: 2026, slug: "textiles_021" },
         { title: "Textiles 022",      year: 2026, slug: "textiles_022" },
         { title: "Textiles 023",      year: 2026, slug: "textiles_023" },
         { title: "Textiles 024",      year: 2026, slug: "textiles_024" },
         { title: "Textiles 025",      year: 2026, slug: "textiles_025" },
-        { title: "Textiles 026",      year: 2026, slug: "textiles_026" },
-        { title: "Textiles 027",      year: 2026, slug: "textiles_027" },
-        { title: "Textiles 028",      year: 2026, slug: "textiles_028" },
+        { title: "Textiles 026",      year: 2026, slug: "textiles_026" },,
         { title: "Textiles 029",      year: 2026, slug: "textiles_029" },
         { title: "Textiles 030",      year: 2026, slug: "textiles_030" },
         { title: "Textiles 031",      year: 2026, slug: "textiles_031" },
-        { title: "Textiles 032",      year: 2026, slug: "textiles_032" },
         { title: "Textiles 033",      year: 2026, slug: "textiles_033" },
         { title: "Textiles 034",      year: 2026, slug: "textiles_034" }
     ];
     if (!works.length) return;
 
+    const ALT = {
+        "Picasso Poots": "Woodblock print of a brown dog outlined in blue-gray against green and pink blocks of color",
+        "Colombia": "Crowded street festival with a Colombian flag overhead",
+        "Seattle": "Two friends talking in front of snow-capped mountains",
+        "Snow Explorers I": "A person in a hat crouched on a pile of snow-covered logs",
+        "Snow Explorers II": "A person pointing across snowy logs in a winter forest",
+        "Textiles 001": "Model in a hooded linen top leaning against a sunlit yellow wall",
+        "Textiles 002": "Top-down view of a model lying on a patterned rug in a blue dress with multicolor trim",
+        "Textiles 003": "Model in a knitted dress posing against a bright green wall",
+        "Textiles 004": "Low-angle shot of a model in a teal top and patchwork pants beneath a white sculpture",
+        "Textiles 005": "Model in a hooded tunic and long skirt in front of lit windows at night",
+        "Textiles 006": "Model seated on wooden stairs in a full blue dress with pompom trim",
+        "Textiles 007": "Model in a knitted dress beneath a rainbow-lit ceiling",
+        "Textiles 008": "Model in a teal top and patchwork pants framed by a curved white sculpture",
+        "Textiles 009": "Model seated on a ledge in a blue dress with multicolor pompom trim, looking up",
+        "Textiles 010": "Model standing outdoors, hand on hip, in a full blue dress",
+        "Textiles 011": "Close portrait in a blue dress with pompom trim against greenery",
+        "Textiles 012": "Model in a knitted halter dress against a yellow-lit lab",
+        "Textiles 013": "Portrait framed by a glowing yellow window",
+        "Textiles 015": "Portrait in a knitted dress in a dark corridor streaked with rainbow light",
+        "Textiles 017": "Full-length pose in a knitted dress against a large tree",
+        "Textiles 018": "Model in a knitted dress standing against a tree in dappled shade",
+        "Textiles 019": "Hooded close portrait against warm golden light",
+        "Textiles 020": "Hooded model in profile against warm window light",
+        "Textiles 022": "Hooded model looking back down a long reflective corridor",
+        "Textiles 023": "Top-down view of a hooded model climbing a metal staircase",
+        "Textiles 024": "Hooded model leaning on a sunlit yellow wall",
+        "Textiles 025": "Model with arms spread beneath a glass canopy",
+        "Textiles 026": "Hooded model walking through a glass walkway",
+        "Textiles 029": "Hooded half-length portrait outdoors",
+        "Textiles 030": "Model in a teal top reaching up beneath a white sculptural arch",
+        "Textiles 031": "Model in patchwork pants walking past a glass-block wall",
+        "Textiles 033": "Smiling portrait in front of a patterned concrete screen",
+        "Textiles 034": "Model seated on stairs by tall windows in a teal top and patchwork pants"
+    };
+    const DIM = {"colombia_2025": [800, 533], "seattle_2024": [800, 533], "snow_explorers_1_2024": [800, 533], "snow_explorers_2_2024": [800, 533], "textiles_001": [533, 800], "textiles_002": [800, 533], "textiles_003": [533, 800], "textiles_004": [533, 800], "textiles_005": [533, 800], "textiles_006": [755, 800], "textiles_007": [533, 800], "textiles_008": [533, 800], "textiles_009": [400, 600], "textiles_010": [464, 600], "textiles_011": [400, 600], "textiles_012": [600, 400], "textiles_013": [600, 600], "textiles_015": [600, 400], "textiles_017": [400, 600], "textiles_018": [400, 600], "textiles_019": [600, 464], "textiles_020": [400, 600], "textiles_022": [600, 400], "textiles_023": [600, 400], "textiles_024": [400, 600], "textiles_025": [600, 400], "textiles_026": [600, 400], "textiles_029": [400, 600], "textiles_030": [600, 400], "textiles_031": [400, 600], "textiles_033": [400, 600], "textiles_034": [400, 600], "picasso": [635, 800]};
+    works.forEach(function (w) {
+        w.alt = ALT[w.title] || w.title;
+        w.dim = DIM[w.slug || "picasso"];
+    });
+
     // Display order: one fixed shuffle, optimized so no shoot sits in adjacent tiles and
     // near-repeats (one apart, or stacked in the 3-across phone grid) are as rare as possible
     const ORDER = [
-        "Textiles 029",
+        "Textiles 024",
+        "Snow Explorers I",
+        "Textiles 031",
         "Textiles 003",
+        "Textiles 026",
         "Textiles 006",
         "Textiles 004",
-        "Textiles 023",
-        "Textiles 016",
-        "Textiles 002",
-        "Textiles 032",
-        "Textiles 024",
-        "Textiles 014",
-        "Textiles 028",
-        "Snow Explorers I",
-        "Textiles 010",
-        "Textiles 017",
-        "Textiles 027",
-        "Textiles 008",
-        "Snow Explorers II",
-        "Textiles 009",
-        "Textiles 019",
         "Textiles 015",
-        "Textiles 001",
-        "Textiles 033",
-        "Seattle",
-        "Textiles 018",
-        "Textiles 022",
-        "Textiles 034",
-        "Colombia",
-        "Textiles 007",
-        "Textiles 005",
-        "Textiles 030",
-        "Textiles 025",
-        "Textiles 012",
-        "Textiles 020",
-        "Textiles 031",
-        "Textiles 021",
-        "Picasso Poots",
+        "Textiles 019",
         "Textiles 011",
+        "Snow Explorers II",
+        "Textiles 008",
+        "Textiles 023",
+        "Textiles 012",
+        "Picasso Poots",
+        "Textiles 009",
+        "Textiles 001",
+        "Seattle",
+        "Textiles 022",
+        "Textiles 007",
+        "Colombia",
+        "Textiles 033",
+        "Textiles 020",
         "Textiles 013",
-        "Textiles 026"
+        "Textiles 029",
+        "Textiles 034",
+        "Textiles 010",
+        "Textiles 018",
+        "Textiles 025",
+        "Textiles 030",
+        "Textiles 002",
+        "Textiles 017",
+        "Textiles 005"
     ];
     works.sort(function (a, b) { return ORDER.indexOf(a.title) - ORDER.indexOf(b.title); });
 
@@ -120,17 +149,19 @@ pp. <a href="https://online.fliphtml5.com/textilesteam/2026-Magazine/#p=2" targe
     const w = works[Math.abs(h) % works.length];
     const attrs = function (x) {
         return (x.strip ? ' data-strip="' + encodeURIComponent(JSON.stringify(x.strip)) + '"' : "") +
-               (x.caption ? ' data-caption="' + encodeURIComponent(x.caption) + '"' : "");
+               (x.caption ? ' data-caption="' + encodeURIComponent(x.caption) + '"' : "") +
+               ' data-alt="' + x.alt.replace(/"/g, "&quot;") + '"';
     };
     document.getElementById("featured").innerHTML =
         '<p class="featured-label">Today&rsquo;s feature</p>' +
         '<a href="' + fullOf(w) + '" class="lightbox-trigger"' + attrs(w) + '><div class="featured-frame">' +
-        '<img src="' + thumbOf(w) + '" alt="' + w.title + '"></div></a>' +
+        '<img src="' + thumbOf(w) + '" alt="' + w.alt + '" width="' + w.dim[0] + '" height="' + w.dim[1] + '"></div></a>' +
         '<figcaption>' + w.title + ' &mdash; ' + w.year + '</figcaption>';
 
     // Grid of all works
     document.getElementById("grid").innerHTML = works.map(function (x) {
-        return '<a href="' + fullOf(x) + '" class="lightbox-trigger"' + attrs(x) + '><img src="' + thumbOf(x) + '" alt="" loading="lazy" decoding="async"></a>';
+        return '<a href="' + fullOf(x) + '" class="lightbox-trigger"' + attrs(x) + '><img src="' + thumbOf(x) + '" alt="' + x.alt + '" width="' + x.dim[0] + '" height="' + x.dim[1] + '" loading="lazy" decoding="async">' +
+            (x.strip ? '<span class="tile-label">Woodblock print &middot; see process</span>' : '') + '</a>';
     }).join("");
 })();
 </script>

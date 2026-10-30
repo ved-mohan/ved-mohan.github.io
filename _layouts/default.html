@@ -4,18 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ page.title }}</title>
+    <meta name="description" content="{{ page.description }}">
+    <link rel="canonical" href="https://vedm.dev{{ page.url }}">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ page.title }}">
+    <meta property="og:description" content="{{ page.description }}">
+    <meta property="og:url" content="https://vedm.dev{{ page.url }}">
+    <meta property="og:image" content="https://vedm.dev/assets/og.jpg">
+    <meta property="og:image:alt" content="Map of a nationwide freight network split into colored zones">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap">
     <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
     <a class="wordmark" href="/">Ved Mohan</a>
 
-    <nav>
+    <nav aria-label="Main">
         <ul>
             <li><a href="/">Home</a></li>
-            <li><a href="/art/">Art</a></li>
             <li><a href="/research/">Research</a></li>
+            <li><a href="/art/">Art</a></li>
         </ul>
     </nav>
+    <script>
+        (function () {
+            var here = location.pathname.replace(/index\.html$/, "");
+            document.querySelectorAll("nav a").forEach(function (a) {
+                var p = a.getAttribute("href");
+                if (p === here || (p !== "/" && here.indexOf(p) === 0)) a.setAttribute("aria-current", "page");
+            });
+        })();
+    </script>
 
     <main>
         {{ content }}
