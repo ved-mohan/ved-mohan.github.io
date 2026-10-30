@@ -52,11 +52,9 @@
         </ul>
     </footer>
 
-    <!-- Clicky analytics: pageviews, referrers, outbound links (auto); in-page events via track() -->
+    <!-- Analytics hook: in-page events call track(); no provider wired up yet -->
     <script>
-        window.track = function (href, title) { if (window.clicky) clicky.log(href, title, "click"); };
+        window.track = function (path, title) {};
     </script>
-    <script async src="https://static.getclicky.com/101355157.js"></script>
-    <noscript><p><img alt="" width="1" height="1" src="https://in.getclicky.com/101355157ns.gif"></p></noscript>
 </body>
 </html>
