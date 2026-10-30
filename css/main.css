@@ -464,3 +464,26 @@ ul.section-links li {
     image-rendering: crisp-edges;
     border: 1px solid var(--rule);
 }
+
+/* press line + lightbox captions */
+.press {
+    text-align: center;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: -1rem 0 2.5rem;
+    line-height: 1.9;
+}
+
+.lightbox-caption {
+    display: none;
+    margin: -0.4rem 0 0;
+    font-size: 0.85rem;
+    color: #d8d8d0;
+    text-align: center;
+}
+
+.lightbox-caption a {
+    color: #c9b9ee;
+}

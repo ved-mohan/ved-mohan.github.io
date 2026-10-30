@@ -2,18 +2,21 @@
     const overlay = document.createElement("div");
     overlay.className = "lightbox-overlay";
     overlay.innerHTML = '<button class="lightbox-close" aria-label="Close">&times;</button>' +
-        '<div class="lightbox-stage"><img class="lightbox-main" alt=""><div class="lightbox-strip"></div>' +
+        '<div class="lightbox-stage"><img class="lightbox-main" alt=""><p class="lightbox-caption"></p><div class="lightbox-strip"></div>' +
         '<p class="lightbox-hint">Tap a panel to enlarge it</p></div>';
     document.body.appendChild(overlay);
     const img = overlay.querySelector(".lightbox-main");
     const strip = overlay.querySelector(".lightbox-strip");
+    const caption = overlay.querySelector(".lightbox-caption");
     const close = overlay.querySelector(".lightbox-close");
     let homeSrc = "";
 
     // strip = [{ src, thumb, label }]: process panels shown comic-strip style under the main image
-    function open(src, steps) {
+    function open(src, steps, cap) {
         homeSrc = src;
         img.src = src;
+        caption.innerHTML = cap || "";
+        caption.style.display = cap ? "block" : "none";
         strip.innerHTML = "";
         overlay.classList.toggle("has-strip", !!(steps && steps.length));
         (steps || []).forEach(function (s, i) {
@@ -45,7 +48,9 @@
         a.addEventListener("click", function (e) {
             e.preventDefault();
             const raw = a.getAttribute("data-strip");
-            open(a.getAttribute("href"), raw ? JSON.parse(decodeURIComponent(raw)) : null);
+            const cap = a.getAttribute("data-caption");
+            open(a.getAttribute("href"), raw ? JSON.parse(decodeURIComponent(raw)) : null,
+                 cap ? decodeURIComponent(cap) : "");
         });
     });
     overlay.addEventListener("click", function (e) {

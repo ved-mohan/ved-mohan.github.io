@@ -5,6 +5,9 @@ title: Art — Ved Mohan
 
 <figure class="featured" id="featured"></figure>
 
+<p class="press">Textiles series featured in the <a href="https://online.fliphtml5.com/textilesteam/2026-Magazine/#p=2" target="_blank" rel="noopener">Textiles Team 2026 Magazine</a><br>
+pp. <a href="https://online.fliphtml5.com/textilesteam/2026-Magazine/#p=2" target="_blank" rel="noopener">2</a> &middot; <a href="https://online.fliphtml5.com/textilesteam/2026-Magazine/#p=15" target="_blank" rel="noopener">15</a> &middot; <a href="https://online.fliphtml5.com/textilesteam/2026-Magazine/#p=20" target="_blank" rel="noopener">20–21</a> &middot; <a href="https://online.fliphtml5.com/textilesteam/2026-Magazine/#p=26" target="_blank" rel="noopener">26</a> &middot; <a href="https://online.fliphtml5.com/textilesteam/2026-Magazine/#p=30" target="_blank" rel="noopener">30</a> &middot; <a href="https://online.fliphtml5.com/textilesteam/2026-Magazine/#p=34" target="_blank" rel="noopener">34</a> &middot; <a href="https://online.fliphtml5.com/textilesteam/2026-Magazine/#p=36" target="_blank" rel="noopener">credits, p. 36</a></p>
+
 <div class="masonry" id="grid"></div>
 
 <script>
@@ -32,6 +35,10 @@ title: Art — Ved Mohan
     ];
     if (!works.length) return;
 
+    const MAG = "https://online.fliphtml5.com/textilesteam/2026-Magazine/";
+    const press = 'Featured in the <a href="' + MAG + '#p=2" target="_blank" rel="noopener">Textiles Team 2026 Magazine</a>';
+    works.forEach(function (w) { if (/^Textiles/.test(w.title)) w.caption = w.title + " &middot; " + press; });
+
     const thumbOf = function (w) { return w.thumb || "/assets/photography/thumbs/" + w.slug + ".jpg"; };
     const fullOf  = function (w) { return w.full  || "/assets/photography/"        + w.slug + ".jpg"; };
 
@@ -47,7 +54,8 @@ title: Art — Ved Mohan
     // Grid of all works
     document.getElementById("grid").innerHTML = works.map(function (x) {
         const strip = x.strip ? ' data-strip="' + encodeURIComponent(JSON.stringify(x.strip)) + '"' : "";
-        return '<a href="' + fullOf(x) + '" class="lightbox-trigger"' + strip + '><img src="' + thumbOf(x) + '" alt=""></a>';
+        const cap = x.caption ? ' data-caption="' + encodeURIComponent(x.caption) + '"' : "";
+        return '<a href="' + fullOf(x) + '" class="lightbox-trigger"' + strip + cap + '><img src="' + thumbOf(x) + '" alt=""></a>';
     }).join("");
 })();
 </script>
