@@ -31,13 +31,39 @@ pp. <a href="https://online.fliphtml5.com/textilesteam/2026-Magazine/#p=2" targe
         { title: "Textiles 005",      year: 2026, slug: "textiles_005" },
         { title: "Textiles 006",      year: 2026, slug: "textiles_006" },
         { title: "Textiles 007",      year: 2026, slug: "textiles_007" },
-        { title: "Textiles 008",      year: 2026, slug: "textiles_008" }
+        { title: "Textiles 008",      year: 2026, slug: "textiles_008" },
+        { title: "Textiles 009",      year: 2026, slug: "textiles_009" },
+        { title: "Textiles 010",      year: 2026, slug: "textiles_010" },
+        { title: "Textiles 011",      year: 2026, slug: "textiles_011" },
+        { title: "Textiles 012",      year: 2026, slug: "textiles_012" },
+        { title: "Textiles 013",      year: 2026, slug: "textiles_013" },
+        { title: "Textiles 014",      year: 2026, slug: "textiles_014" },
+        { title: "Textiles 015",      year: 2026, slug: "textiles_015" },
+        { title: "Textiles 016",      year: 2026, slug: "textiles_016" },
+        { title: "Textiles 017",      year: 2026, slug: "textiles_017" },
+        { title: "Textiles 018",      year: 2026, slug: "textiles_018" },
+        { title: "Textiles 019",      year: 2026, slug: "textiles_019" },
+        { title: "Textiles 020",      year: 2026, slug: "textiles_020" },
+        { title: "Textiles 021",      year: 2026, slug: "textiles_021" },
+        { title: "Textiles 022",      year: 2026, slug: "textiles_022" },
+        { title: "Textiles 023",      year: 2026, slug: "textiles_023" },
+        { title: "Textiles 024",      year: 2026, slug: "textiles_024" },
+        { title: "Textiles 025",      year: 2026, slug: "textiles_025" },
+        { title: "Textiles 026",      year: 2026, slug: "textiles_026" },
+        { title: "Textiles 027",      year: 2026, slug: "textiles_027" },
+        { title: "Textiles 028",      year: 2026, slug: "textiles_028" },
+        { title: "Textiles 029",      year: 2026, slug: "textiles_029" },
+        { title: "Textiles 030",      year: 2026, slug: "textiles_030" },
+        { title: "Textiles 031",      year: 2026, slug: "textiles_031" },
+        { title: "Textiles 032",      year: 2026, slug: "textiles_032" },
+        { title: "Textiles 033",      year: 2026, slug: "textiles_033" },
+        { title: "Textiles 034",      year: 2026, slug: "textiles_034" }
     ];
     if (!works.length) return;
 
     const MAG = "https://online.fliphtml5.com/textilesteam/2026-Magazine/";
     const press = 'Featured in the <a href="' + MAG + '#p=2" target="_blank" rel="noopener">Textiles Team 2026 Magazine</a>';
-    works.forEach(function (w) { if (/^Textiles/.test(w.title)) w.caption = w.title + " &middot; " + press; });
+    works.forEach(function (w) { if (/^Textiles/.test(w.title)) w.caption = w.title + " &middot; from the series " + press.replace("Featured", "featured"); });
 
     const thumbOf = function (w) { return w.thumb || "/assets/photography/thumbs/" + w.slug + ".jpg"; };
     const fullOf  = function (w) { return w.full  || "/assets/photography/"        + w.slug + ".jpg"; };
@@ -47,15 +73,19 @@ pp. <a href="https://online.fliphtml5.com/textilesteam/2026-Magazine/#p=2" targe
     let h = 0;
     for (let i = 0; i < today.length; i++) h = ((h << 5) - h + today.charCodeAt(i)) | 0;
     const w = works[Math.abs(h) % works.length];
+    const attrs = function (x) {
+        return (x.strip ? ' data-strip="' + encodeURIComponent(JSON.stringify(x.strip)) + '"' : "") +
+               (x.caption ? ' data-caption="' + encodeURIComponent(x.caption) + '"' : "");
+    };
     document.getElementById("featured").innerHTML =
-        '<div class="featured-frame"><img src="' + thumbOf(w) + '" alt="' + w.title + '"></div>' +
+        '<p class="featured-label">Today&rsquo;s feature</p>' +
+        '<a href="' + fullOf(w) + '" class="lightbox-trigger"' + attrs(w) + '><div class="featured-frame">' +
+        '<img src="' + thumbOf(w) + '" alt="' + w.title + '"></div></a>' +
         '<figcaption>' + w.title + ' &mdash; ' + w.year + '</figcaption>';
 
     // Grid of all works
     document.getElementById("grid").innerHTML = works.map(function (x) {
-        const strip = x.strip ? ' data-strip="' + encodeURIComponent(JSON.stringify(x.strip)) + '"' : "";
-        const cap = x.caption ? ' data-caption="' + encodeURIComponent(x.caption) + '"' : "";
-        return '<a href="' + fullOf(x) + '" class="lightbox-trigger"' + strip + cap + '><img src="' + thumbOf(x) + '" alt=""></a>';
+        return '<a href="' + fullOf(x) + '" class="lightbox-trigger"' + attrs(x) + '><img src="' + thumbOf(x) + '" alt="" loading="lazy" decoding="async"></a>';
     }).join("");
 })();
 </script>
