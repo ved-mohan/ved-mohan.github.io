@@ -65,6 +65,11 @@ def build():
     if index_src.exists():
         (BUILD / "index.html").write_text(render(index_src, layout_src), encoding="utf-8")
 
+    # GitHub Pages serves /404.html for missing pages
+    notfound_src = ROOT / "404.html"
+    if notfound_src.exists():
+        (BUILD / "404.html").write_text(render(notfound_src, layout_src), encoding="utf-8")
+
     # Walk for nested index.html under any non-skipped dir
     for src in ROOT.rglob("index.html"):
         if src == index_src:
