@@ -52,9 +52,12 @@
         </ul>
     </footer>
 
-    <!-- Analytics hook: in-page events call track(); no provider wired up yet -->
+    <!-- GoatCounter analytics: pageviews + referrers (auto); in-page events via track() -->
     <script>
-        window.track = function (path, title) {};
+        window.track = function (path, title) {
+            if (window.goatcounter && goatcounter.count) goatcounter.count({ path: path.replace(/^#/, ""), title: title, event: true });
+        };
     </script>
+    <script data-goatcounter="https://vmoh.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>
