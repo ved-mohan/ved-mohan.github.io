@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Research — Ved Mohan
-description: Research by Ved Mohan on fair, ML-accelerated optimization for nationwide logistics networks and on language-guided re-optimization of deployed models.
+description: Ved Mohan's research: fair, ML-accelerated optimization for logistics networks, and language-guided re-optimization.
 ---
 
 <h1 class="sr-only">Research</h1>
@@ -9,25 +9,25 @@ description: Research by Ved Mohan on fair, ML-accelerated optimization for nati
 <article class="post" id="fair-substitution">
     <h2><a href="https://arxiv.org/abs/2511.18269">A Fair OR&ndash;ML Framework for Resource Substitution in Large-Scale Networks</a></h2>
     <p class="meta"><strong>Ved Mohan</strong>, El Mehdi Er Raqabi, Pascal Van Hentenryck &middot; Under revision at <em>Transportation Science</em></p>
-    <p>Freight imbalances leave equipment in the wrong places. We combine optimization and machine learning to recommend equipment swaps on trips that are already scheduled, balancing network-wide efficiency against the workload in each zone. In our experiments, the approach cut model size by 80% and execution time by 90% while preserving optimality.</p>
+    <p>Swapping equipment on already-scheduled trips to fix freight imbalances, fairly across zones. ML cuts model size by 80% and solve time by 90%, with the same optimum.</p>
     <p class="links"><a href="https://arxiv.org/abs/2511.18269">arXiv</a> <a href="https://arxiv.org/pdf/2511.18269">PDF</a></p>
     <figure class="netmap">
         <img id="netmap" src="/assets/research/fairsub-network-final.webp" width="1100" height="619"
              alt="Map of the lower 48 with about 1,700 freight locations, the lanes between them, and 46 colored zones.">
-        <button type="button" class="play" id="netmap-play">&#9654; Play network build</button>
-        <figcaption>A nationwide freight network: about 1,700 locations and 46 zones, each planning its own equipment.</figcaption>
+        <button type="button" class="play" id="netmap-play">&#9654; Play</button>
+        <figcaption>About 1,700 locations, 46 zones.</figcaption>
     </figure>
 </article>
 
 <article class="post" id="reopt-llm">
     <h2><a href="https://arxiv.org/abs/2605.18692">Democratizing Large-Scale Re-Optimization with LLM-Guided Model Patches</a></h2>
     <p class="meta">Tinghan Ye, Arnaud Deza, <strong>Ved Mohan</strong>, El Mehdi Er Raqabi, Pascal Van Hentenryck &middot; NeurIPS 2026 Workshop on ML&times;OR</p>
-    <p>When operating rules change, planners need to update deployed optimization models. Our framework turns plain-language requests into auditable model patches, picks a re-optimization method, and re-solves. We evaluate it on online supply-chain re-optimization and offline university exam scheduling.</p>
+    <p>Plain-language requests become auditable model patches, then a re-solve. Tested on supply-chain re-optimization and exam scheduling.</p>
     <p class="links"><a href="https://arxiv.org/abs/2605.18692">arXiv</a> <a href="https://arxiv.org/pdf/2605.18692">PDF</a></p>
     <figure>
         <img src="/assets/research/reopt-llm-framework.png" width="1324" height="876" loading="lazy" decoding="async"
              alt="Diagram of the ReOpt-LLM framework: an LLM sits between the user interface, the optimization model, a toolbox of re-optimization techniques, and the optimizer.">
-        <figcaption>From a planner&rsquo;s request to an updated solution: structured model changes and a toolbox of re-optimization methods.</figcaption>
+        <figcaption>Request &rarr; model patch &rarr; re-solve.</figcaption>
     </figure>
 </article>
 
@@ -38,7 +38,7 @@ description: Research by Ved Mohan on fair, ML-accelerated optimization for nati
     var still = img.getAttribute("src"), stillAlt = img.alt, timer = null;
     function stop() {
         clearTimeout(timer); img.src = still; img.alt = stillAlt;
-        btn.innerHTML = "&#9654; Play network build"; btn.setAttribute("aria-pressed", "false");
+        btn.innerHTML = "&#9654; Play"; btn.setAttribute("aria-pressed", "false");
     }
     btn.setAttribute("aria-pressed", "false");
     btn.addEventListener("click", function () {

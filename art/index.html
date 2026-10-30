@@ -1,12 +1,12 @@
 ---
 layout: default
 title: Art — Ved Mohan
-description: Photography and woodblock prints by Ved Mohan, including the Textiles series featured in the Textiles Team 2026 Magazine.
+description: Photography and woodblock prints by Ved Mohan.
 ---
 
 <figure class="featured" id="featured"></figure>
 
-<p class="press">Textiles series featured across seven pages of the <a href="https://online.fliphtml5.com/textilesteam/2026-Magazine/#p=2" target="_blank" rel="noopener">Textiles Team 2026 Magazine</a></p>
+<p class="press">Textiles series featured in the <a href="https://online.fliphtml5.com/textilesteam/2026-Magazine/#p=2" target="_blank" rel="noopener">Textiles Team 2026 Magazine</a></p>
 
 <div class="masonry" id="grid"></div>
 
@@ -46,7 +46,7 @@ description: Photography and woodblock prints by Ved Mohan, including the Textil
         { title: "Textiles 023",      year: 2026, slug: "textiles_023" },
         { title: "Textiles 024",      year: 2026, slug: "textiles_024" },
         { title: "Textiles 025",      year: 2026, slug: "textiles_025" },
-        { title: "Textiles 026",      year: 2026, slug: "textiles_026" },,
+        { title: "Textiles 026",      year: 2026, slug: "textiles_026" },
         { title: "Textiles 029",      year: 2026, slug: "textiles_029" },
         { title: "Textiles 030",      year: 2026, slug: "textiles_030" },
         { title: "Textiles 031",      year: 2026, slug: "textiles_031" },
@@ -137,7 +137,7 @@ description: Photography and woodblock prints by Ved Mohan, including the Textil
 
     const MAG = "https://online.fliphtml5.com/textilesteam/2026-Magazine/";
     const press = 'Featured in the <a href="' + MAG + '#p=2" target="_blank" rel="noopener">Textiles Team 2026 Magazine</a>';
-    works.forEach(function (w) { if (/^Textiles/.test(w.title)) w.caption = w.title + " &middot; from the series " + press.replace("Featured", "featured"); });
+    works.forEach(function (w) { if (/^Textiles/.test(w.title)) w.caption = w.title + " &middot; " + press; });
 
     const thumbOf = function (w) { return w.thumb || "/assets/photography/thumbs/" + w.slug + ".jpg"; };
     const fullOf  = function (w) { return w.full  || "/assets/photography/"        + w.slug + ".jpg"; };
@@ -161,7 +161,7 @@ description: Photography and woodblock prints by Ved Mohan, including the Textil
     // Grid of all works
     document.getElementById("grid").innerHTML = works.map(function (x) {
         return '<a href="' + fullOf(x) + '" class="lightbox-trigger"' + attrs(x) + '><img src="' + thumbOf(x) + '" alt="' + x.alt + '" width="' + x.dim[0] + '" height="' + x.dim[1] + '" loading="lazy" decoding="async">' +
-            (x.strip ? '<span class="tile-label">Woodblock print &middot; see process</span>' : '') + '</a>';
+            (x.strip ? '<span class="tile-label">See process</span>' : '') + '</a>';
     }).join("");
 })();
 </script>
