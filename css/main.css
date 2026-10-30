@@ -370,12 +370,25 @@ ul.section-links li {
     nav ul li {
         margin-right: 1rem;
     }
+    /* phones: a compact contact sheet (3 square tiles across) instead of one long column */
     .masonry {
-        column-width: auto;
-        column-count: 1;
+        columns: auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 4px;
         width: 100%;
         left: auto;
         transform: none;
+    }
+    .masonry a {
+        margin: 0;
+        aspect-ratio: 1;
+        overflow: hidden;
+    }
+    .masonry img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 }
 

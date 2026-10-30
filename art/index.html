@@ -61,6 +61,51 @@ pp. <a href="https://online.fliphtml5.com/textilesteam/2026-Magazine/#p=2" targe
     ];
     if (!works.length) return;
 
+    // Display order: one fixed shuffle, optimized so no shoot sits in adjacent tiles and
+    // near-repeats (one apart, or stacked in the 3-across phone grid) are as rare as possible
+    const ORDER = [
+        "Textiles 029",
+        "Textiles 003",
+        "Textiles 006",
+        "Textiles 004",
+        "Textiles 023",
+        "Textiles 016",
+        "Textiles 002",
+        "Textiles 032",
+        "Textiles 024",
+        "Textiles 014",
+        "Textiles 028",
+        "Snow Explorers I",
+        "Textiles 010",
+        "Textiles 017",
+        "Textiles 027",
+        "Textiles 008",
+        "Snow Explorers II",
+        "Textiles 009",
+        "Textiles 019",
+        "Textiles 015",
+        "Textiles 001",
+        "Textiles 033",
+        "Seattle",
+        "Textiles 018",
+        "Textiles 022",
+        "Textiles 034",
+        "Colombia",
+        "Textiles 007",
+        "Textiles 005",
+        "Textiles 030",
+        "Textiles 025",
+        "Textiles 012",
+        "Textiles 020",
+        "Textiles 031",
+        "Textiles 021",
+        "Picasso Poots",
+        "Textiles 011",
+        "Textiles 013",
+        "Textiles 026"
+    ];
+    works.sort(function (a, b) { return ORDER.indexOf(a.title) - ORDER.indexOf(b.title); });
+
     const MAG = "https://online.fliphtml5.com/textilesteam/2026-Magazine/";
     const press = 'Featured in the <a href="' + MAG + '#p=2" target="_blank" rel="noopener">Textiles Team 2026 Magazine</a>';
     works.forEach(function (w) { if (/^Textiles/.test(w.title)) w.caption = w.title + " &middot; from the series " + press.replace("Featured", "featured"); });
