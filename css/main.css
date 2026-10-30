@@ -382,3 +382,13 @@ ul.section-links li {
     image-rendering: crisp-edges;
     border: 1px solid var(--rule);
 }
+
+.process.four {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 520px) {
+    .process.four {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
