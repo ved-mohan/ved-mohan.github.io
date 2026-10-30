@@ -55,11 +55,13 @@
                 b.setAttribute("aria-pressed", "true");
                 show(s.src, "Process step " + (i + 1) + ": " + s.label);
                 back.hidden = false;
+                if (window.track) track("#art/process/" + (i + 1), "Process step " + (i + 1) + ": " + s.label);
             });
             strip.appendChild(b);
         });
         document.documentElement.classList.add("lightbox-open");
         dlg.showModal();
+        if (window.track) track("#art/" + (a.getAttribute("data-title") || home.src), "Opened: " + (a.getAttribute("data-title") || home.src));
         closeBtn.focus();
     }
 

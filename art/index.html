@@ -150,7 +150,7 @@ description: Photography and woodblock prints by Ved Mohan.
     const attrs = function (x) {
         return (x.strip ? ' data-strip="' + encodeURIComponent(JSON.stringify(x.strip)) + '"' : "") +
                (x.caption ? ' data-caption="' + encodeURIComponent(x.caption) + '"' : "") +
-               ' data-alt="' + x.alt.replace(/"/g, "&quot;") + '"';
+               ' data-alt="' + x.alt.replace(/"/g, "&quot;") + '" data-title="' + x.title + '"';
     };
     document.getElementById("featured").innerHTML =
         '<p class="featured-label">Today&rsquo;s feature</p>' +

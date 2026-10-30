@@ -4,9 +4,6 @@ title: Ved Mohan — Machine Learning & Optimization
 description: Ved Mohan, Machine Learning PhD candidate at Georgia Tech. Optimization models that non-experts can adapt.
 ---
 
-<script async src="//static.getclicky.com/101355157.js"></script>
-<noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/101355157ns.gif" /></p></noscript>
-
 <h1 class="statement">I help non-technical decision-makers adapt large-scale optimization models.</h1>
 
 <p>
@@ -30,6 +27,7 @@ Advanced Analytics Manager in industry.
     document.querySelectorAll("a.email").forEach(function (a) {
         a.addEventListener("click", function (e) {
             e.preventDefault();
+            track("#email", "Email link");
             var rev = function (x) { return x.split("").reverse().join(""); };
             location.href = "mailto:" + rev(a.dataset.u) + "@" + rev(a.dataset.d);
         });

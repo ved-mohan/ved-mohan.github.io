@@ -47,6 +47,7 @@ description: Ved Mohan's research: fair, ML-accelerated optimization for logisti
         img.alt = "Animation: locations appear, lanes connect them, and the network splits into 6, then 16, then 46 zones.";
         btn.innerHTML = "&#9632; Stop"; btn.setAttribute("aria-pressed", "true");
         timer = setTimeout(stop, 8200);
+        if (window.track) track("#research/play-map", "Played network map");
     });
 })();
 </script>
